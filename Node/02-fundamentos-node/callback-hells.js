@@ -34,11 +34,46 @@ const getEmpleado = (id, callback) =>{
     
 }
 
-getEmpleado(5, (err, empleado)=>{ //el primer argumento va a ser un error
+const getSalario= (id, callback) =>{
+    const salario = salarios.find(s=>s.id === id)?.salario;
+    
+    if(salario){
+        callback(null, salario);
+    }else{
+        callback(`No existe salario para el id ${id}`);
+    }
+}
+
+const idEmpleado = 3;
+const idSalario = 3;
+getEmpleado(idEmpleado, (err, empleado)=>{ //el primer argumento va a ser un error
+    if(err){
+        console.log('¡ERROR empleado!');
+        return console.log(err);
+    }
+    console.log('¡Empleado existe!');
+    console.log('Empleado json: ', empleado);
+    console.log('Empleado nombre:', empleado.nombre);
+
+    getSalario(idSalario,(err, salario)=>{
+        if(err){
+            console.log('¡ERROR Salario!');
+            return console.log(err);
+        }
+    
+        console.log(salario);
+    });
+});
+
+
+
+/*
+getSalario(idSalario,(err, salario)=>{
     if(err){
         console.log('ERROR!');
         return console.log(err);
     }
-    console.log('Empleado existe!');
-    console.log(empleado);
+
+    console.log(salario);
 });
+*/
