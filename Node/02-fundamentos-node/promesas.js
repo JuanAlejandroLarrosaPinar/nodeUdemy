@@ -47,10 +47,25 @@ const getSalario = (id)=>{
         }
     });
 }
-const id = 2;
-getEmpleado(id)
+const id = 3;
+/*getEmpleado(id)
     .then(empleado=>{
         console.log(empleado);
-        getSalario(id).then(s=>console.log(s)).catch(e=>console.log(e));
+        getSalario(id)
+        .then(s=>console.log(s)).catch(e=>console.log(e));
     })
     .catch(e=>console.log(e));
+*/
+
+//promesas en cadena
+let nombre;
+getEmpleado(id).then(
+    empleado=>{
+        //console.log(empleado);
+        nombre = empleado?.nombre;
+        return getSalario(id);
+    }
+).then(s=>{
+    console.log(`El empleado ${nombre} tiene un salario de ${s?.salario}`);
+}).catch(e=>console.log(e))
+;    
