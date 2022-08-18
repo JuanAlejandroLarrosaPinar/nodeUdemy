@@ -1,3 +1,4 @@
+const { guardarDB } = require('./helpers/guardarArchivo');
 const { inquirerMenu, leerInput } = require('./helpers/inquirer');
 require('colors');
 const { pausa } = require('./helpers/inquirer');
@@ -31,6 +32,7 @@ const main = async () =>{
         //tareas._listado[tarea.id] = tarea;
         //console.log(tarea);
         //console.log(tareas);
+        guardarDB(tareas.listadoArr);
         if(opt!=='0') await pausa();
     }while(opt!=='0')
     
