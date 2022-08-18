@@ -11,9 +11,18 @@ const argv = require('yargs')
             'default' : false,
             'describe': 'Muestra la tabla en consola'
         })
+        .option('h', {
+            'alias' : 'hasta',
+            'type' : 'number',
+            'default' : 10,
+            'describe' : 'Indica el último número de la tabla hasta la que mostrar'
+        })
         .check((argv, options)=>{
             if(isNaN(argv.b)){
                 throw 'La base tiene que ser un número';
+            }
+            if(isNaN(argv.h)){
+                throw 'El parámetro h tiene que ser un número';
             }
             return true;
         })

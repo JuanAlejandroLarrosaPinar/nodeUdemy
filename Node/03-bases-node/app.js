@@ -16,4 +16,4 @@ console.log(argv);
 
 console.log('base: yargs', argv.base);
 
-crearArchivo(argv.base, argv.listar).then(nombreArchivo=>console.log(nombreArchivo.rainbow, 'creado')).catch('Error al crear fichero');
+crearArchivo(argv.base, argv.listar, argv.h).then(nombreArchivo=>console.log(nombreArchivo.rainbow, 'creado')).catch('Error al crear fichero');
