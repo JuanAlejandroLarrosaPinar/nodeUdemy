@@ -7,7 +7,7 @@ const Tareas = require('./models/tareas');
 //const { mostrarMenu, pausa } = require('./helpers/mensajes');
 
 const main = async () =>{
-    console.log('Hola mundo');
+    //console.log('Hola mundo');
 
     let opt = '';
     const tareas = new Tareas();
@@ -33,7 +33,8 @@ const main = async () =>{
                 break;
             case '2':
                 //console.log(tareas._listado);
-                console.log(tareas.listadoArr);
+                //console.log(tareas.listadoArr);
+                tareas.listadoCompleto();
                 break;
         }
 
