@@ -17,7 +17,7 @@ const crearArchivo = async (base = 5, listar = false, hasta = 10) => {
             console.log(colors.green(consola));
         }
 
-        const nombreFichero = `tabla-${base}.txt`;
+        const nombreFichero = `salida/tabla-${base}.txt`;
         /*fs.writeFile(nombreFichero, salida, (err)=>{
             if(err) throw err;
             console.log(`${nombreFichero} creado`);
