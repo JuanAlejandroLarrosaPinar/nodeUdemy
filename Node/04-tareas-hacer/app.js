@@ -12,7 +12,7 @@ const main = async () => {
     let opt = '';
     const tareas = new Tareas();
     const tareasDB = leerDB();
-    console.log(tareasDB);
+    //console.log(tareasDB);
     if (tareasDB) {
         //tareas = tareasDB;
         tareas.cargarTareasFromArray(tareasDB);
@@ -44,7 +44,7 @@ const main = async () => {
                 break;
             case '5':
                 const ids = await mostrarListadoCheckList(tareas.listadoArr);
-                console.log(ids);
+                //console.log(ids);
                 tareas.toggleCompletadas(ids);
                 break;
             case '6':
