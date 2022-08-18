@@ -1,4 +1,5 @@
 const fs = require('fs');
+const colors = require('colors');
 const crearArchivo = async (base=5, listar=false)=>{
     try{
         
@@ -13,7 +14,7 @@ const crearArchivo = async (base=5, listar=false)=>{
         console.log('----------------------------')
         console.log('Tabla del', base);
         console.log('----------------------------')
-        console.log(salida);
+        console.log(colors.green(salida));
     }
     
     const nombreFichero = `tabla-${base}.txt`;
