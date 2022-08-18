@@ -14,3 +14,5 @@ Con "node app --version" podemos consultar la versión de nuestra aplicación.
 Con "node app --help" podemos ver la ayuda que nos ofrece la aplicación.
 
 "37. Colores en consola" : 
+
+"40. Respaldo del proyecto con en GitHub": esta sección ya se ha completado porque hemos colgado siempre de Github.
