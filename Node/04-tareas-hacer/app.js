@@ -15,6 +15,7 @@ const main = async () =>{
     console.log(tareasDB);
     if(tareasDB){
         //tareas = tareasDB;
+        tareas.cargarTareasFromArray(tareasDB);
     }
     
     
