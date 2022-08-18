@@ -1,4 +1,6 @@
 Node/03-bases-node/node_modules
 Node/03-bases-node/package-lock.json
-Node/03-bases-node/package.json
+#Node/03-bases-node/package.json
 Node/03-bases-node/salida
+Node/04-tareas-hacer/node_modules
+Node/04-tareas-hacer/package-lock.json
