@@ -26,3 +26,5 @@ Con "node app --help" podemos ver la ayuda que nos ofrece la aplicación.
 "72. Mapbox Search API y token de acceso": https://www.mapbox.com/
 
 "75 Variables de entorno": Utilizar paquete dotenv "npm i dotenv". Hay que tener un fichero .env donde estén las variables globales.
+
+"77. Openweather - Información del clima": openweathermap.org. https://api.openweathermap.org/data/2.5/weather?lat=40.416705&lon=-3.703583&appid=21f26300a642a015a1e80d7807cda50a&units=metric&lang=es
