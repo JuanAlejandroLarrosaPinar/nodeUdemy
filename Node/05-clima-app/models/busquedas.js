@@ -1,7 +1,10 @@
+const fs = require('fs');
 const axios = require('axios');
 
 class Busquedas {
-    historial = ['Madrid', 'Barcelona'];
+
+    historial = [];
+    dbPath= 'db/database.json'; 
 
     constructor() {
         // TODO: 
@@ -71,6 +74,26 @@ class Busquedas {
         } catch (error) {
             console.log(error);
         }
+    }
+
+    agregarHistorial(lugar = ''){
+        //TODO: Prevenir duplicados
+        if(this.historial.includes(lugar.toLowerCase())){
+            return;
+        }
+        this.historial.unshift(lugar);
+        this.guardarDB();
+
+
+
+        //Grabar en DB
+    }
+
+    guardarDB(){
+        const payLoad = {
+            historial: this.historial
+        }
+        fs.writeFileSync(this.dbPath, JSON.stringify(payLoad));
     }
 }
 
