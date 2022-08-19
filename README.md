@@ -20,3 +20,5 @@ Con "node app --help" podemos ver la ayuda que nos ofrece la aplicación.
 "49. Inquirer" : Para instalar el paquete hay que ejecutar "npm i inquirer@7.3.3". Nota: he tenido que utilizar la versión 7.3.3 porque la última no estaba funcionando correctamente.
 
 "51.Lógica para el manejo de las tareas por hacer": instalar uuid "npm i uuid"
+
+"71. Realizar peticiones HTTP desde Node": 1 - request. 2 - fetch, 3 - axios
