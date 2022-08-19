@@ -22,3 +22,5 @@ Con "node app --help" podemos ver la ayuda que nos ofrece la aplicación.
 "51.Lógica para el manejo de las tareas por hacer": instalar uuid "npm i uuid"
 
 "71. Realizar peticiones HTTP desde Node": 1 - request. 2 - fetch, 3 - axios
+
+"72. Mapbox Search API y token de acceso": https://www.mapbox.com/
