@@ -7,7 +7,15 @@ class Busquedas {
     dbPath= 'db/database.json'; 
 
     constructor() {
-        // TODO: 
+        this.leerBD();
+    }
+
+    get historialCapitalizado(){
+        return this.historial.map(lugar=>{
+            let palabras = lugar.split(' ');
+            palabras = palabras.map(p=>p[0].toUpperCase() + p.substring(1));
+            return palabras.join(' ');
+        })
     }
 
     get paramsMapbox() {
@@ -94,6 +102,19 @@ class Busquedas {
             historial: this.historial
         }
         fs.writeFileSync(this.dbPath, JSON.stringify(payLoad));
+    }
+
+    leerBD(){
+        const existe = fs.existsSync(this.dbPath);
+        console.log(existe);
+        if(existe){
+            const data =fs.readFileSync(this.dbPath,{
+                encoding:'utf-8'
+            });
+            
+            this.historial = JSON.parse(data).historial;
+            console.log(this.historial);
+        }
     }
 }
 
