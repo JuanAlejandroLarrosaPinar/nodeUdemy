@@ -32,3 +32,5 @@ Con "node app --help" podemos ver la ayuda que nos ofrece la aplicación.
 "88. Introducción a EXPRESS": npm i express
 
 "89. Servir contenido estático": creamos la carpeta púlico
+
+"90. Servir un sitio web completo": en el ejercicio hay sitios donde no se le han quitado los .html para la redirección. Es decir, cuando pulsamos sobre un enlace hay sitios donde sigue apareciendo el sufijo ".html"
