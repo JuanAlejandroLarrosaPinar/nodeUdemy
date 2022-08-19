@@ -24,3 +24,5 @@ Con "node app --help" podemos ver la ayuda que nos ofrece la aplicación.
 "71. Realizar peticiones HTTP desde Node": 1 - request. 2 - fetch, 3 - axios
 
 "72. Mapbox Search API y token de acceso": https://www.mapbox.com/
+
+"75 Variables de entorno": Utilizar paquete dotenv "npm i dotenv". Hay que tener un fichero .env donde estén las variables globales.
