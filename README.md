@@ -38,3 +38,5 @@ Con "node app --help" podemos ver la ayuda que nos ofrece la aplicación.
 "91. Handlebars": npm install hbs Cogemos los ficheros CREDITS.txt, los 3 html y LICENSE.txt y los llevamos a una carpeta llamada template.
 
 "94. Preparar Webserver para subir a un hosting": npm i dotenv
+
+"95,96,97": No se realiza el despliegue en heroku porque no es necesario para el aprendizaje.
