@@ -9,3 +9,5 @@ Node/05-clima-app/package-lock.json
 Node/06-webserver/node_modules
 Node/06-webserver/package-lock.json
 Node/06-webserver/.gitignore
+Node/07-restserver/node_modules
+Node/07-restserver/package-lock.json
