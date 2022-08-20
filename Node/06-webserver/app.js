@@ -1,10 +1,15 @@
 const express = require('express');
 const app = express();
 const port = 8080;
-
 //hbs
+const hbs = require('hbs');
+
+
+
+
 //TODO: require('hbs')
 app.set('view engine', 'hbs');
+hbs.registerPartials(__dirname + '/views/partials');
 
 //Servir contenido estático
 app.use(express.static('public'));
@@ -15,6 +20,16 @@ app.get('/',(req, res)=>{
         nombre: 'Juan Alejandro',
         titulo: 'Curso de Node'
     });
+})
+
+app.get('/generic', (req, res)=>{
+    res.render('generic',{
+
+    });
+})
+
+app.get('/elements', (req, res) =>{
+    res.render('elements',{});
 })
 
 
