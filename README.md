@@ -42,3 +42,5 @@ Con "node app --help" podemos ver la ayuda que nos ofrece la aplicación.
 "95,96,97": No se realiza el despliegue en heroku porque no es necesario para el aprendizaje.
 
 "105.CORS - Middleware": npm i cors
+
+"118. Mongoose - Conectarnos a la base de datos": npm i mongoose
