@@ -34,3 +34,5 @@ Con "node app --help" podemos ver la ayuda que nos ofrece la aplicación.
 "89. Servir contenido estático": creamos la carpeta púlico
 
 "90. Servir un sitio web completo": en el ejercicio hay sitios donde no se le han quitado los .html para la redirección. Es decir, cuando pulsamos sobre un enlace hay sitios donde sigue apareciendo el sufijo ".html"
+
+"91. Handlebars": npm install hbs Cogemos los ficheros CREDITS.txt, los 3 html y LICENSE.txt y los llevamos a una carpeta llamada template.

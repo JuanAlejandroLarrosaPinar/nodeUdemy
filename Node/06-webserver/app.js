@@ -2,8 +2,18 @@ const express = require('express');
 const app = express();
 const port = 8080;
 
+//hbs
+//TODO: require('hbs')
+app.set('view engine', 'hbs');
+
 //Servir contenido estático
 app.use(express.static('public'));
+
+app.get('/',(req, res)=>{
+    //res.send('Hola mundo');
+    res.render('home');
+})
+
 
 //GET
 app.get('/', function(req, res){
