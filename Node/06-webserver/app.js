@@ -1,6 +1,8 @@
 const express = require('express');
 const app = express();
-const port = 8080;
+require('dotenv').config();
+const port = parseInt(process.env.PORT);
+
 //hbs
 const hbs = require('hbs');
 
