@@ -12,16 +12,50 @@ class Server {
         this.routes();
     }
 
-    middleWares(){
+    middleWares() {
         this.app.use(express.static('public'));
     }
 
     routes() {
         this.app.get('/api', (req, res) => {
-            res.send('Hello world')
+            //res.send('Hello world')
+            res.status(200).send({
+                ok: true,
+                msg: "get API"
+            });
         });
 
+        this.app.put('/api', (req, res) => {
+            //res.send('Hello world')
+            res.status(200).send({
+                ok: true,
+                msg: "put API"
+            });
+        });
 
+        this.app.post('/api', (req, res) => {
+            //res.send('Hello world')
+            res.status(200).send({
+                ok: true,
+                msg: "post API"
+            });
+        });
+
+        this.app.delete('/api', (req, res) => {
+            //res.send('Hello world')
+            res.status(200).send({
+                ok: true,
+                msg: "delete API"
+            });
+        });
+
+        this.app.patch('/api', (req, res) => {
+            //res.send('Hello world')
+            res.status(200).send({
+                ok: true,
+                msg: "patch API"
+            });
+        });
     }
 
     listen() {
