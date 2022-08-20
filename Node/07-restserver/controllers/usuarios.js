@@ -1,5 +1,8 @@
 const {response, request} = require('express');
 const usuariosGet = (req = request, res=response) => {
+    const params = req.query;
+    const {q, nombre, page = 1} = params;
+    console.log(q, nombre, page);
     //res.send('Hello world')
     res.status(200).send({
         ok: true,
@@ -8,10 +11,13 @@ const usuariosGet = (req = request, res=response) => {
 }
 
 const usuariosPut = (req, res) => {
+    const id = req.params.id;
+    console.log(id);
     //res.send('Hello world')
     res.status(200).send({
         ok: true,
-        msg: "put API - controlador"
+        msg: "put API - controlador",
+        id
     });
 }
 
