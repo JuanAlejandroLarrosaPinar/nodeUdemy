@@ -17,7 +17,7 @@ const usuariosGet = (req = request, res=response) => {
 
 const usuariosPut = async (req, res) => {
     const {id} = req.params;
-    const {password, google, correo, ...resto} = req.body;
+    const {_id, password, google, correo, ...resto} = req.body; //de esta manera ignoramos todo menos el "resto"
 
     //TODO Validar contra base de datos.
     if(password){
