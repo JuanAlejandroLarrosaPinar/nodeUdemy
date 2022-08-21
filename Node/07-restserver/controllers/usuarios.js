@@ -1,4 +1,9 @@
 const {response, request} = require('express');
+
+const Usuario = require('../models/usuario');
+
+const bcryptjs = require('bcryptjs');
+
 const usuariosGet = (req = request, res=response) => {
     const params = req.query;
     const {q, nombre, page = 1} = params;
@@ -21,15 +26,23 @@ const usuariosPut = (req, res) => {
     });
 }
 
-const usuariosPost = (req, res) => {
-    const body = req.body;
-    console.log(body);
-    const {nombre, edad} = body;
+const usuariosPost = async (req, res) => {
+    const {nombre, correo, password, rol} = req.body;
+    
+    const usuario = new Usuario({nombre, correo, password, rol});
+
+    //Verificar si el correo existe
+    const salt = bcryptjs.genSaltSync(); //10 es por defecto. Si le ponemos 100 tarda más
+    usuario.password = bcryptjs.hashSync(password, salt);
+    //Encriptar la contraseña
+
+    //Guardar en BBDD
+    await usuario.save();
+
     //res.send('Hello world')
     res.status(200).send({
         ok: true,
-        msg: "post API - controlador",
-        nombre, edad
+        usuario
     });
 }
 

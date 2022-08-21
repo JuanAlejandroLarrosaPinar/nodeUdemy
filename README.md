@@ -44,3 +44,5 @@ Con "node app --help" podemos ver la ayuda que nos ofrece la aplicación.
 "105.CORS - Middleware": npm i cors
 
 "118. Mongoose - Conectarnos a la base de datos": npm i mongoose
+
+"121. BCryptJS - Encriptando la contraseña": npm i bcryptjs
