@@ -46,3 +46,5 @@ Con "node app --help" podemos ver la ayuda que nos ofrece la aplicación.
 "118. Mongoose - Conectarnos a la base de datos": npm i mongoose
 
 "121. BCryptJS - Encriptando la contraseña": npm i bcryptjs
+
+"122. Validar campos obligatorios - Email": npm i express-validator
