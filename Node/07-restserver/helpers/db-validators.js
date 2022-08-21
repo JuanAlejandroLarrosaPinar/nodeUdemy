@@ -9,7 +9,8 @@ const esRoleValido = async (rol = '') => {
 }
 
 const emailExiste = async(correo) =>{
-    const usuario = Usuario.findOne({correo});
+    const usuario = await Usuario.findOne({correo});
+    
     if(usuario){
         throw new Error(`Ya existe un usuario con el correo ${correo} en la BBDD`);
     }

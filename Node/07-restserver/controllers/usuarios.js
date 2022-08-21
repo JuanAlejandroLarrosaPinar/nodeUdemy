@@ -4,14 +4,13 @@ const bcryptjs = require('bcryptjs');
 const Usuario = require('../models/usuario');
 
 
-const usuariosGet = (req = request, res=response) => {
-    const params = req.query;
-    const {q, nombre, page = 1} = params;
-    console.log(q, nombre, page);
-    //res.send('Hello world')
-    res.status(200).send({
-        ok: true,
-        msg: "get API - controlador"
+const usuariosGet = async (req = request, res=response) => {
+    const {limite = 5, desde = 0} = req.query;
+    const usuarios = await Usuario.find()
+        .skip(parseInt(desde))
+        .limit(parseInt(limite));
+    res.json({
+        usuarios
     });
 }
 
