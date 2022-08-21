@@ -7,6 +7,7 @@ const {
     usuariosDelete,
     usuariosPost
 } = require('../controllers/usuarios');
+const { validarCampos } = require('../middlewares/validar-campos');
 
 const router = Router();
 
@@ -15,7 +16,13 @@ router.get('/', usuariosGet);
 router.put('/:id', usuariosPut);
 
 router.post('/',[
-    check('correo', 'El correo no es válido').isEmail()
+    check('nombre', 'El nombre es obligatorio').not().isEmpty(), //Con check validamos los campos que nos llegan del body
+    check('password', 'El password debe ser de más de 6 letras').isLength({
+        min:6
+    }),
+    check('correo', 'El correo no es válido').isEmail(),
+    check('rol', 'No es un rol válido').isIn(['ADMIN_ROLE', 'USER_ROLE']),
+    validarCampos
 ] ,usuariosPost); //el segundo parámetro son los middlewares
 
 router.delete('/', usuariosDelete);
