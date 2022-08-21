@@ -1,0 +1,68 @@
+{
+	"info": {
+		"_postman_id": "7e69d14d-d119-42c8-b5f3-d331bebab81c",
+		"name": "Udemy - Node - Cero experto",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "USUARIOS-POST",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"nombre\":\"asdf\",\r\n    \"google\":false,\r\n    \"correo\" :\"test5ef6@egmadil.com\",\r\n    \"password\": \"pass22\",\r\n    \"rol\": \"ADMIN_ROLE\"\r\n\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:8080/api/usuarios",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"api",
+						"usuarios"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "USUARIOS-PUT",
+			"request": {
+				"method": "PUT",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"google\": true,\r\n    \"correo\": \"modificado@gmail.ddcom\",\r\n    \"password\": \"modificado\",\r\n    \"rol\": \"VENTAS_ROLE\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:8080/api/usuarios/63024958dd924899ad0bd4b9",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"api",
+						"usuarios",
+						"63024958dd924899ad0bd4b9"
+					]
+				}
+			},
+			"response": []
+		}
+	]
+}

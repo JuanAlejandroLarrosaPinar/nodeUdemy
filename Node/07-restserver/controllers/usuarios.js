@@ -15,14 +15,22 @@ const usuariosGet = (req = request, res=response) => {
     });
 }
 
-const usuariosPut = (req, res) => {
-    const id = req.params.id;
-    console.log(id);
-    //res.send('Hello world')
-    res.status(200).send({
-        ok: true,
-        msg: "put API - controlador",
-        id
+const usuariosPut = async (req, res) => {
+    const {id} = req.params;
+    const {password, google, correo, ...resto} = req.body;
+
+    //TODO Validar contra base de datos.
+    if(password){
+        //Encriptar la contraseña
+        const salt = bcryptjs.genSaltSync(); //10 es por defecto. Si le ponemos 100 tarda más
+        resto.password = bcryptjs.hashSync(password, salt);
+    }
+
+    const usuario = await Usuario.findByIdAndUpdate(id, resto);
+
+    res.json({
+        msg: 'put API - usuariosPut',
+        usuario
     });
 }
 
