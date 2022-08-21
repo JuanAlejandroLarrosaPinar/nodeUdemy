@@ -9,7 +9,7 @@ const {
     usuariosPost
 } = require('../controllers/usuarios');
 const { validarCampos } = require('../middlewares/validar-campos');
-const { esRoleValido } = require('../helpers/db-validators');
+const { esRoleValido, emailExiste } = require('../helpers/db-validators');
 
 const router = Router();
 
@@ -25,6 +25,7 @@ router.post('/', [
     check('correo', 'El correo no es válido').isEmail(),
     //check('rol', 'No es un rol válido').isIn(['ADMIN_ROLE', 'USER_ROLE']),
     check('rol').custom(esRoleValido),
+    check('correo').custom(emailExiste),
     validarCampos
 ], usuariosPost); //el segundo parámetro son los middlewares
 

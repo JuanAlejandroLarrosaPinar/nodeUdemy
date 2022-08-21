@@ -33,12 +33,13 @@ const usuariosPost = async (req, res) => {
     const usuario = new Usuario({nombre, correo, password, rol});
 
     //Verificar si el correo existe
-    const existeEmail = await Usuario.findOne({correo});
+    //Pasamos esta lógica al middleware.
+    /*const existeEmail = await Usuario.findOne({correo});
     if (existeEmail){
         return res.status(400).json({
             msg: 'Ese correo ya está registrado'
         });
-    }
+    }*/
     //Encriptar la contraseña
     const salt = bcryptjs.genSaltSync(); //10 es por defecto. Si le ponemos 100 tarda más
     usuario.password = bcryptjs.hashSync(password, salt);
