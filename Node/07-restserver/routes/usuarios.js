@@ -9,6 +9,7 @@ const {
     usuariosPost
 } = require('../controllers/usuarios');
 const { validarCampos } = require('../middlewares/validar-campos');
+const { esRoleValido } = require('../helpers/db-validators');
 
 const router = Router();
 
@@ -16,21 +17,16 @@ router.get('/', usuariosGet);
 
 router.put('/:id', usuariosPut);
 
-router.post('/',[
+router.post('/', [
     check('nombre', 'El nombre es obligatorio').not().isEmpty(), //Con check validamos los campos que nos llegan del body
     check('password', 'El password debe ser de más de 6 letras').isLength({
-        min:6
+        min: 6
     }),
     check('correo', 'El correo no es válido').isEmail(),
     //check('rol', 'No es un rol válido').isIn(['ADMIN_ROLE', 'USER_ROLE']),
-    check('rol').custom(async (rol = '')=>{
-        const existeRol = await Role.findOne({rol});
-        if(!existeRol){
-            throw new Error(`El rol ${rol} no está registrado en la BBDD`);
-        }
-    }),
+    check('rol').custom(esRoleValido),
     validarCampos
-] ,usuariosPost); //el segundo parámetro son los middlewares
+], usuariosPost); //el segundo parámetro son los middlewares
 
 router.delete('/', usuariosDelete);
 

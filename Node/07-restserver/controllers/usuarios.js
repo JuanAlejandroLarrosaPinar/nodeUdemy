@@ -28,7 +28,6 @@ const usuariosPut = (req, res) => {
 
 const usuariosPost = async (req, res) => {
     
-
     const {nombre, correo, password, rol} = req.body;
     
     const usuario = new Usuario({nombre, correo, password, rol});
@@ -48,7 +47,6 @@ const usuariosPost = async (req, res) => {
 
     //res.send('Hello world')
     res.status(200).send({
-        ok: true,
         usuario
     });
 }
