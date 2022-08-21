@@ -41,7 +41,7 @@
 				"header": [],
 				"body": {
 					"mode": "raw",
-					"raw": "{\r\n    \"google\": true,\r\n    \"correo\": \"modificado@gmail.ddcom\",\r\n    \"password\": \"modificado\",\r\n    \"rol\": \"VENTAS_ROLE\"\r\n}",
+					"raw": "{\r\n    \"google\": true,\r\n    \"correo\": \"modificado2@gmail.ddcom\",\r\n    \"password\": \"modificado\",\r\n    \"rol\": \"ADMIN_ROLE\"\r\n}",
 					"options": {
 						"raw": {
 							"language": "json"
@@ -59,6 +59,47 @@
 						"api",
 						"usuarios",
 						"63024958dd924899ad0bd4b9"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "USUARIOS-GET-PAGINADOS",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:8080/api/usuarios",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"api",
+						"usuarios"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "USUARIOS-DELETE",
+			"request": {
+				"method": "DELETE",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:8080/api/usuarios/6302614e1e4aa5c2953dfc94",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"api",
+						"usuarios",
+						"6302614e1e4aa5c2953dfc94"
 					]
 				}
 			},

@@ -76,11 +76,15 @@ const usuariosPost = async (req, res) => {
     });
 }
 
-const usuariosDelete =  (req, res) => {
-    //res.send('Hello world')
-    res.status(200).send({
-        ok: true,
-        msg: "delete API - controlador"
+const usuariosDelete =  async (req, res) => {
+
+    const {id} = req.params;
+    //borrado físico
+    //const usuario = await Usuario.findByIdAndDelete(id);
+    const usuario = await Usuario.findByIdAndUpdate(id, {estado:false});
+
+    res.json({
+        id
     });
 }
 
