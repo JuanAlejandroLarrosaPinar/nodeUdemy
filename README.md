@@ -48,3 +48,6 @@ Con "node app --help" podemos ver la ayuda que nos ofrece la aplicación.
 "121. BCryptJS - Encriptando la contraseña": npm i bcryptjs
 
 "122. Validar campos obligatorios - Email": npm i express-validator
+
+"137. Introducción a los tokens": un token está dividido en 3 partes : header, payload y firma. Header (contiene información del algoritmo utilizado),
+payload: información que queramos. Firma para definir si el token es válido.
