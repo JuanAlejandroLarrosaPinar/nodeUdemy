@@ -51,3 +51,5 @@ Con "node app --help" podemos ver la ayuda que nos ofrece la aplicación.
 
 "137. Introducción a los tokens": un token está dividido en 3 partes : header, payload y firma. Header (contiene información del algoritmo utilizado),
 payload: información que queramos. Firma para definir si el token es válido.
+
+"142. Generar un JWT": npm i jsonwebtoken
