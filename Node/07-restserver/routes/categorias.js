@@ -20,10 +20,12 @@ router.post('/', (req, res)=>{
     res.json('post');
 });
 
+//Actualizar - privado - cualquiera con token válido
 router.put('/:id', (req, res)=>{
     res.json('put');
 });
 
+// Borrar una categoria - Admin
 router.delete('/:id',(req, res)=>{
     res.json('delete');
 })
