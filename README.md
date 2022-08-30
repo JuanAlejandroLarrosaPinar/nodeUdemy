@@ -53,3 +53,5 @@ Con "node app --help" podemos ver la ayuda que nos ofrece la aplicación.
 payload: información que queramos. Firma para definir si el token es válido.
 
 "142. Generar un JWT": npm i jsonwebtoken
+
+"157. Validar Token de Google - Backend": npm install google-auth-library --save

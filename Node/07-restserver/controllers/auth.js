@@ -48,10 +48,34 @@ const googleSignIn = async(req, res=response)=>{
     const {id_token} = req.body;
     try{
         const googleUser = await googleVerify(id_token);
-        console.log('googleUser vale:');
-        console.log(googleUser);
-
         const {nombre, img, correo} = googleUser;
+
+        let usuario = await Usuario.findOne({correo});
+
+        if(!usuario){
+            // Tengo que crearlo
+            const data = {
+                nombre,
+                correo,
+                password: ':P', //da igual la password
+                img,
+                google: true,
+                rol: 'USER_ROLE'
+            };
+
+            usuario = new Usuario(data);
+            await usuario.save();
+        }
+
+        if (!usuario.estado){
+            return res.status(401).json({
+                msg: 'Hable con el administrador, usuario bloqueado'
+            });
+        }
+        //console.log('googleUser vale:');
+        //console.log(googleUser);
+
+        
         res.json({
             msg: 'Todo bien! Google signin',
             googleUser
