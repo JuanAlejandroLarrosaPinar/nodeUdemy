@@ -1,6 +1,5 @@
 const {Router} = require('express');
 const {check} = require('express-validator');
-const { login, googleSignIn } = require('../controllers/auth');
 const { crearCategoria } = require('../controllers/categorias');
 const { validarJWT, validarCampos } = require('../middlewares/index');
 
@@ -12,7 +11,9 @@ router.get('/', (req, res)=>{
 });
 
 //Obtener una cateogria por id - publico
-router.get('/:id', (req, res)=>{
+router.get('/:id',
+    check('id').custom(existeCategoria)
+    ,(req, res)=>{
     res.json('get');
 });
 

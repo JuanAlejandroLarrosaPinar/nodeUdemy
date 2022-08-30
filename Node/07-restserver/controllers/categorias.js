@@ -2,6 +2,10 @@ const { request, response, json } = require("express");
 const categoria = require("../models/categoria");
 const {Categoria} = require('../models/index');
 
+//obtenerCategorias - paginado - total - populate (como el fetch que tira a usuario)
+
+//obtenerCategoría - populate (como el fetch que tira a usuario)
+
 const crearCategoria = async (req=request, res = response) =>{
     const nombre = req.body.nombre.toUpperCase();
     const categoriaDB = await Categoria.findOne({nombre});
@@ -26,6 +30,10 @@ const crearCategoria = async (req=request, res = response) =>{
         categoria
     });
 }
+
+//actualizarCategoria
+
+//borrarCategoria - estado: false
 
 module.exports = {
     crearCategoria
