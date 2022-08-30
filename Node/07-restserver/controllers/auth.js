@@ -53,11 +53,13 @@ const googleSignIn = async(req, res=response)=>{
         let usuario = await Usuario.findOne({correo});
 
         if(!usuario){
+            const salt = bcryptjs.genSaltSync(); //10 es por defecto. Si le ponemos 100 tarda más
+            password = bcryptjs.hashSync(':P', salt);
             // Tengo que crearlo
             const data = {
                 nombre,
                 correo,
-                password: ':P', //da igual la password
+                password, //da igual la password
                 img,
                 google: true,
                 rol: 'USER_ROLE'
