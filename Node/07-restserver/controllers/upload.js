@@ -1,5 +1,6 @@
 const { response, request } = require("express");
 const path = require('path');
+const {v4:uuidv4} = require('uuid');
 const cargarArchivo = (req = request, res = response) => {
     
     
@@ -17,7 +18,7 @@ const cargarArchivo = (req = request, res = response) => {
 
     //Validar la extension
     const extensionesValidas = [
-        'png', 'jpg', 'jpeg', 'gif'
+        'png', 'jpg', 'jpeg', 'gif','pdf'
     ];
 
     if(!extensionesValidas.includes(extension)){
@@ -25,11 +26,10 @@ const cargarArchivo = (req = request, res = response) => {
             msg:`La extensión ${extension} no es válida. Extensiones válidas: ${extensionesValidas}`
         });
     }
-    res.json({
-        extension
-    })
-    /*const uploadPath = path.join(__dirname, '../uploads/', archivo.name);
-    console.log(__dirname);
+    
+    const nombreTemp = uuidv4()+'.'+extension;
+    const uploadPath = path.join(__dirname, '../uploads/', nombreTemp);
+    
     // Use the mv() method to place the file somewhere on your server
     archivo.mv(uploadPath, function (err) {
         if (err)
@@ -37,7 +37,7 @@ const cargarArchivo = (req = request, res = response) => {
         res.json({
             msg:'Fichero movido' + uploadPath
         })
-    });*/
+    });
 }
 
 module.exports = {

@@ -57,3 +57,5 @@ payload: información que queramos. Firma para definir si el token es válido.
 "157. Validar Token de Google - Backend": npm install google-auth-library --save
 
 "183. Subir archivos": npm i express-fileupload
+
+"185. Ubicar y cambiar nombre": npm i uuid
