@@ -10,10 +10,17 @@ const cargarArchivo = async (req = request, res = response) => {
         });
     }
 
-    const nombre = await subirArchivo(req.files, ['pdf'],'');
-    res.status(200).json({
-        nombre
-    });
+    const nombre = await subirArchivo(req.files, ['pdf'],'pdfs');
+    try{
+        res.status(200).json({
+            nombre
+        });
+    }catch(error){
+        res.status(400).json({
+            error
+        })
+    }
+    
 }
 
 module.exports = {
