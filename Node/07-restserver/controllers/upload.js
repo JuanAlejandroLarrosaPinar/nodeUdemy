@@ -1,7 +1,6 @@
 const { response, request } = require("express");
-const path = require('path');
-const {v4:uuidv4} = require('uuid');
-const cargarArchivo = (req = request, res = response) => {
+const { subirArchivo } = require("../helpers/subir-archivo");
+const cargarArchivo = async (req = request, res = response) => {
     
     
 
@@ -11,32 +10,9 @@ const cargarArchivo = (req = request, res = response) => {
         });
     }
 
-    const {archivo} = req.files;
-    const nombreCortado = archivo.name.split('.');
-    console.log(nombreCortado);
-    const extension = nombreCortado[nombreCortado.length-1];
-
-    //Validar la extension
-    const extensionesValidas = [
-        'png', 'jpg', 'jpeg', 'gif','pdf'
-    ];
-
-    if(!extensionesValidas.includes(extension)){
-        return res.status(400).json({
-            msg:`La extensión ${extension} no es válida. Extensiones válidas: ${extensionesValidas}`
-        });
-    }
-    
-    const nombreTemp = uuidv4()+'.'+extension;
-    const uploadPath = path.join(__dirname, '../uploads/', nombreTemp);
-    
-    // Use the mv() method to place the file somewhere on your server
-    archivo.mv(uploadPath, function (err) {
-        if (err)
-            return res.status(500).send(err);
-        res.json({
-            msg:'Fichero movido' + uploadPath
-        })
+    const nombre = await subirArchivo(req.files, ['pdf'],'');
+    res.status(200).json({
+        nombre
     });
 }
 
