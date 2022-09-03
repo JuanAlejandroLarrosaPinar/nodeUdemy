@@ -5,6 +5,9 @@ class Server {
     constructor() {
         this.app = express();
         this.port = process.env.PORT;
+        //socket io: http://localhost:8080/socket.io/socket.io.js fichero js que socket.io nos ofrece
+        this.server = require('http').createServer(this.app);
+        this.io = require('socket.io')(this.server);
 
         this.path = {}
         
@@ -29,7 +32,7 @@ class Server {
     }
 
     listen() {
-        this.app.listen(this.port, () => {
+        this.server.listen(this.port, () => {
             console.log(`Servidor corriendo en el puerto`, this.port);
         });
     }
