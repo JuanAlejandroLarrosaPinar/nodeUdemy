@@ -65,7 +65,7 @@ class TicketControl{
 
         const ticket =  this.tickets.shift(); //borra el primer elemento y lo borra -> this.tickets[0]
         ticket.escritorio = escritorio;
-        this.ultimos4.unshift(ticket);
+        this.ultimos4.unshift(ticket); //añade
         
         if(this.ultimos4.length>4){
             this.ultimos4.splice(-1,1);
