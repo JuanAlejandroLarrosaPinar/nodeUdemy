@@ -28,4 +28,8 @@ btnEnviar.addEventListener('click', ()=>{
         fecha:new Date()
     }
     socket.emit('enviar-mensaje', payload);
+});
+
+socket.on('enviar-mensaje', (payload)=>{
+    console.log('Mensaje', payload);
 })

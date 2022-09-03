@@ -43,7 +43,8 @@ class Server {
             });
 
             socket.on('enviar-mensaje', (payload)=>{
-                console.log('Mensaje: ', payload);
+                //console.log('Mensaje: ', payload);
+                this.io.emit('enviar-mensaje', payload);
             });
         });
 
