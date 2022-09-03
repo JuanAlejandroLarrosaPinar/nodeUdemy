@@ -2,6 +2,8 @@ const { response, request } = require("express");
 const { model } = require("mongoose");
 const { subirArchivo } = require("../helpers/subir-archivo");
 const { Usuario, Producto } = require("../models");
+const path = require('path');
+const fs = require('fs');
 
 const cargarArchivo = async (req = request, res = response) => {
     
@@ -53,7 +55,22 @@ const actualizarImagen = async (req= request, res = response)=>{
             });
     }
 
-    modelo.img = await subirArchivo(req.files, undefined, coleccion);
+    //Limpiar imágenes previas
+    try{
+        if(modelo.img){
+            // Hay que borrar la imagen del servidor
+            const pathImagen = path.join(__dirname, '../uploads', coleccion, modelo.img);
+            if(fs.existsSync(pathImagen)){
+                fs.unlinkSync(pathImagen);
+            }
+
+        }
+    }catch(error){
+
+    }
+
+    const nombre = await subirArchivo(req.files, undefined, coleccion);
+    modelo.img = nombre
             
     await modelo.save();
 
