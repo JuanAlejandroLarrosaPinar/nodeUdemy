@@ -15,6 +15,9 @@ class Server {
         this.middleWares();
         //Rutas de mi aplicación
         this.routes();
+
+        //Sockets
+        this.sockets();
     }
 
     
@@ -29,6 +32,16 @@ class Server {
 
     routes() {
         //this.app.use(this.path.upload, require('../routes/upload'));
+    }
+
+    sockets(){
+        this.io.on('connection', (socket)=>{
+            console.log(`Cliente conectado ${socket.id}`);
+        });
+
+        this.io.on('disconnect', (socket)=>{
+            console.log(`Cliente desconectado ${socket.id}`);
+        });
     }
 
     listen() {
