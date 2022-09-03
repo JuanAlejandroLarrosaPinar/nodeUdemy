@@ -12,3 +12,4 @@ Node/06-webserver/.gitignore
 Node/07-restserver/node_modules
 Node/07-restserver/package-lock.json
 Node/07-restserver/uploads
+Node/08-websocket-server/node_modules
