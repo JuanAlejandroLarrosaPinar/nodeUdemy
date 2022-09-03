@@ -1,5 +1,6 @@
 const express = require('express');
 const cors = require('cors');
+const { socketController } = require('../sockets/controller');
 
 class Server {
     constructor() {
@@ -35,25 +36,7 @@ class Server {
     }
 
     sockets(){
-        this.io.on('connection', (socket)=>{
-            console.log(`Cliente conectado ${socket.id}`);
-
-            socket.on('disconnect', (socket)=>{
-                //console.log(`Cliente desconectado ${socket.id}`);
-            });
-
-            socket.on('enviar-mensaje', (payload,callback)=>{
-                //console.log('Mensaje: ', payload);
-                //this.io.emit('enviar-mensaje', payload);
-
-                const id = 123456;//id de ejemplo que generamos en bbdd al guardar x registro
-                callback(id);//al invocar al callback es una manera de decirle al cliente que todo se ha realizado ok
-            });
-        });
-
-        
-
-        
+        this.io.on('connection', socketController);
     }
 
     listen() {
