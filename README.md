@@ -59,3 +59,5 @@ payload: información que queramos. Firma para definir si el token es válido.
 "183. Subir archivos": npm i express-fileupload
 
 "185. Ubicar y cambiar nombre": npm i uuid
+
+"193. Mostrar imagen de relleno": faltaría la parte de cloudbinary, que de momento no es muy prioritaria

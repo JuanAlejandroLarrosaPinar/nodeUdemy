@@ -79,7 +79,56 @@ const actualizarImagen = async (req= request, res = response)=>{
     })
 }
 
+const mostrarImagen = async (req = request, res = response)=>{
+    const {id, coleccion} = req.params;
+
+    let modelo;
+
+    switch(coleccion){
+        case 'usuarios':
+            modelo = await Usuario.findById(id);
+            if(!modelo){
+                return res.status(400).json({
+                    msg: `No existe un usuario con el id ${id}`
+                });
+            }
+            
+            break;
+        case 'productos':
+            modelo = await Producto.findById(id);
+            if(!modelo){
+                return res.status(400).json({
+                    msg: `No existe un producto con le id ${id}`
+                })
+            }
+            break;
+        default:
+            return res.status(500).json({
+                msg: 'Se me olvidó validar esto'
+            });
+    }
+
+    //Limpiar imágenes previas
+    try{
+        if(modelo.img){
+            // Hay que borrar la imagen del servidor
+            const pathImagen = path.join(__dirname, '../uploads', coleccion, modelo.img);
+            if(fs.existsSync(pathImagen)){
+                return res.sendFile(pathImagen);
+            }
+
+        }
+    }catch(error){
+        return res.status(500).json(error);
+    }
+    const pathImagenDefecto = path.join(__dirname,'../assets','', 'no-image.jpg')
+    return res.sendFile(pathImagenDefecto);
+
+    
+}
+
 module.exports = {
     cargarArchivo,
-    actualizarImagen
+    actualizarImagen,
+    mostrarImagen
 }
