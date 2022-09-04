@@ -1,12 +1,8 @@
-
 // Referencias del HTML
 const lblNuevoTicket = document.querySelector('#lblNuevoTicket');
 const btnCrear = document.querySelector('#btnCrear');
 
-
 const socket = io();
-
-
 
 socket.on('connect', () => {
     btnCrear.disabled=false;
