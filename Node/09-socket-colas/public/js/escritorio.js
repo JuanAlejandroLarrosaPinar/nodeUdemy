@@ -3,6 +3,9 @@ const searchParams = new URLSearchParams(window.location.search);
 
 const lblEscritorio = document.querySelector('#lblEscritorio');
 const btnAtender = document.querySelector('#btnAtender');
+const divAlerta = document.querySelector('#divAlerta');
+const lblTicketsAtender = document.querySelector('#lblTicketsAtender');
+const lblAtendiendo = document.querySelector('#lblAtendiendo');
 
 if(!searchParams.has('escritorio')){
     window.location = 'index.html';
@@ -35,9 +38,20 @@ socket.on('ultimo-ticket', (ultimo)=>{
 
 
 btnAtender.addEventListener( 'click', () => {
+    console.log('hola')
+    socket.emit('atender-ticket', {escritorio}, ({ok, ticket, msg })=>{
+        console.log(ok, ticket, msg);
+        if(!ok){
+            lblAtendiendo.innerText=`Nadie`;
+            lblTicketsAtender.innerText=msg;
+            return divAlerta.className ='alert alert-danger mt-2';
+        }else{
+            lblAtendiendo.innerText=`Ticket ${ticket.numero}`;
+            lblTicketsAtender.innerText='';
+            return divAlerta.className ='alert alert-info mt-2';
+        }
 
-    socket.emit('atender', null, (ticket)=>{
         
-    })
+    });
 
 });

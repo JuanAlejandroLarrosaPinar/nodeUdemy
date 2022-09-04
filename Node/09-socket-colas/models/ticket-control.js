@@ -71,7 +71,7 @@ class TicketControl{
             this.ultimos4.splice(-1,1);
         }
 
-        console.log(ultimos4);
+//        console.log(ultimos4);
 
         this.guardarDB();
 

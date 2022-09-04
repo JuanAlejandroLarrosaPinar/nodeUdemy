@@ -15,7 +15,7 @@
     <hr>
     <div class="row">
         <div class="col-8">
-            <h4>Atendiendo a <small class="text-primary">....</small></h4>
+            <h4>Atendiendo a <small class="text-primary" id="lblAtendiendo">....</small></h4>
         
             <button class="btn btn-primary mt-5" id="btnAtender">
                 Atender siguiente ticket
@@ -25,8 +25,8 @@
         <div class="col-4 text-center">
             <h4>En cola</h4>
             
-            <div class="alert alert-info mt-2">
-                <span>Ya no hay más tickets</span>
+            <div class="alert alert-info mt-2" id="divAlerta">
+                <span id="lblTicketsAtender">Ya no hay más tickets</span>
             </div>
 
             <h1 id="lblPendientes">10</h1>
