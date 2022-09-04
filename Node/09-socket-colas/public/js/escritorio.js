@@ -1,11 +1,13 @@
 
 const searchParams = new URLSearchParams(window.location.search);
 
+// Referencias del HTML
 const lblEscritorio = document.querySelector('#lblEscritorio');
 const btnAtender = document.querySelector('#btnAtender');
 const divAlerta = document.querySelector('#divAlerta');
 const lblTicketsAtender = document.querySelector('#lblTicketsAtender');
 const lblAtendiendo = document.querySelector('#lblAtendiendo');
+const lblPendientes = document.querySelector('#lblPendientes');
 
 if(!searchParams.has('escritorio')){
     window.location = 'index.html';
@@ -16,9 +18,8 @@ const escritorio = searchParams.get('escritorio');
 console.log(escritorio);
 
 
-// Referencias del HTML
-const lblNuevoTicket = document.querySelector('#lblNuevoTicket');
-const btnCrear = document.querySelector('#btnCrear');
+
+
 
 const socket = io();
 
@@ -34,11 +35,25 @@ socket.on('disconnect', () => {
 socket.on('ultimo-ticket', (ultimo)=>{
     console.log(ultimo);
     //lblNuevoTicket.innerText = 'Ticket ' + ultimo;
+});
+
+socket.on('tickets-pendientes', (total)=>{
+    console.log(total);
+    if(total==0){
+        divAlerta.className ='alert alert-danger mt-2';
+    }else{
+        divAlerta.className ='alert alert-info mt-2';
+        lblTicketsAtender.innerText='';
+    }
+
+    lblPendientes.innerText=total;
+    
+    
 })
 
 
 btnAtender.addEventListener( 'click', () => {
-    console.log('hola')
+    
     socket.emit('atender-ticket', {escritorio}, ({ok, ticket, msg })=>{
         console.log(ok, ticket, msg);
         if(!ok){
