@@ -2,11 +2,16 @@ const express = require('express');
 const cors = require('cors');
 const { dbConnection } = require('../database/config');
 const fileUpload = require('express-fileupload');
-
+const {createServer} = require('http');
+const { socketController } = require('../sockets/controller');
 class Server {
     constructor() {
         this.app = express();
         this.port = process.env.PORT;
+
+        //socket io
+        this.server = createServer(this.app);
+        this.io = require('socket.io')(this.server);
 
         this.path = {
             aut: '/api/auth',
@@ -18,12 +23,15 @@ class Server {
         }
         
         //Conectar a base de datos
-        this.conectarDB();
+        //this.conectarDB();
 
         //Middlewares
         this.middleWares();
         //Rutas de mi aplicación
-        this.routes();
+        //this.routes();
+
+        //Sockets
+        this.sockets();
     }
 
     async conectarDB(){
@@ -56,8 +64,13 @@ class Server {
         this.app.use(this.path.upload, require('../routes/upload'));
     }
 
+    sockets(){
+        
+        this.io.on('connection', socketController);
+    }
+
     listen() {
-        this.app.listen(this.port, () => {
+        this.server.listen(this.port, () => {
             console.log(`Servidor corriendo en el puerto`, this.port);
         });
     }
